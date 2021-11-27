@@ -110,12 +110,27 @@ final class Main {
 							}
 						else
 						{
-							if(in.get()!=0){
+							if(in.get()!=0 && patterns.toArray().length<4){
 
 							results.addAll(m.get(o[in.get()]).stream().distinct().collect(Collectors.toList()));}
 						}
 
 					}
+					if(patterns.toArray().length>3)
+					{
+						if (in.get() == 2){
+							list3.addAll(m.get(o[in.get()]));
+							}
+						else
+						{
+							if(in.get()==3){
+
+							results.addAll(m.get(o[in.get()]).stream().distinct().collect(Collectors.toList()));}
+						}
+
+					}
+
+
 					if(patterns.toArray().length==1)
 						results.addAll(m.get(o[in.get()]));
 
@@ -133,6 +148,29 @@ final class Main {
 				if(i==1)
 				{
 					List<Integer> list = list2.stream().distinct().collect(Collectors.toList());
+
+					results.addAll(list);
+		final Set<Integer> setToReturn = new HashSet<>();
+		final Set<Integer> set1 = new HashSet<>();
+
+		for (Integer yourInt : results)
+		{
+			if (!set1.add(yourInt))
+			{
+				setToReturn.add(yourInt);
+			}
+		}
+		results.clear();
+		results.addAll(setToReturn);
+		results.forEach((k) -> System.out.println(k));
+
+
+				}
+
+			if(patterns.toArray().length>3)
+				if(i==2)
+				{
+					List<Integer> list = list3.stream().distinct().collect(Collectors.toList());
 
 					results.addAll(list);
 		final Set<Integer> setToReturn = new HashSet<>();
